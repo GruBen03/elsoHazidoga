@@ -14,7 +14,7 @@ class regiszracio extends Controller
         return view("rogzites",["rogzites" => $adatok]);
     }
     public function rogzites(Request $req){
-        $validated = $req->validate(
+        $req->validate(
             [
                 "vezetek" => "required|text",
                 "kereszt" => "required|text",
@@ -31,9 +31,9 @@ class regiszracio extends Controller
                     
             ]
         );
-        DB::insert("INSERT INTO Rogzites(`id`, `vezeteknev`, `kereszt`, `szulev`) VALUES (?,?,?,?)", 
+        DB::insert("INSERT INTO Rogzites(`id`, `vezetek`, `kereszt`, `szulev`) VALUES (?,?,?,?)", 
         [$req->get('id'),
-        $req->get('vezeteknev'),
+        $req->get('vezetek'),
         $req->get('kereszt'),
         $req->get('szulev'),
         ]);
