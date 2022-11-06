@@ -14,9 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('Rogzites', function(Blueprint $table){
-            $table->string('vezetek', 20);
+            $table->int('id');
+            $table->string('vezeteknev', 20);
             $table->string('kereszt', 20);
-            $table->int('szulev');
+            $table->int('szulev',4);
         });
     }
 
