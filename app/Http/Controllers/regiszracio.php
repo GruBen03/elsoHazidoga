@@ -5,13 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class HomersekletRogzites extends Controller
+class regiszracio extends Controller
 {
     public function getContent(){
 
-        $termek = DB::select("SELECT * FROM termek ORDER BY nev ASC");
+        $adatok = DB::select("SELECT * FROM rogzites ORDER BY id ASC");
 
-        return view("homersekletRogzites",["termek" => $termek]);
+        return view("rogzites",["rogzites" => $adatok]);
     }
     public function rogzites(Request $req){
         $req->validate(
@@ -31,8 +31,8 @@ class HomersekletRogzites extends Controller
                     
             ]
         );
-        DB::insert("INSERT INTO Rogzites(`vezeteknev`, `kereszt`, `szulev`) VALUES (?,?,?)", 
-        [
+        DB::insert("INSERT INTO Rogzites(`id`, `vezeteknev`, `kereszt`, `szulev`) VALUES (?,?,?,?)", 
+        [$req->get('id'),
         $req->get('vezeteknev'),
         $req->get('kereszt'),
         $req->get('szulev'),
