@@ -14,7 +14,7 @@ class regiszracio extends Controller
         return view("rogzites",["rogzites" => $adatok]);
     }
     public function rogzites(Request $req){
-        $req->validate(
+        $validated = $req->validate(
             [
                 "vezetek" => "required|text",
                 "kereszt" => "required|text",
